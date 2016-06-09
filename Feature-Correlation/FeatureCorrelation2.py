@@ -1,3 +1,5 @@
+#This code is meant to be used with actual data (not just random features)
+
 import random
 from scipy.stats.stats import pearsonr
 import numpy as np
