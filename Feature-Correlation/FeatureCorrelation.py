@@ -1,3 +1,5 @@
+#This one creates random features and works with them (proof of concept)
+
 import random
 from scipy.stats.stats import pearsonr
 import numpy
