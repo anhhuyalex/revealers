@@ -1,5 +1,4 @@
 #This code is meant to be used with actual data (not just random features)
-
 import random
 from scipy.stats.stats import pearsonr
 import numpy as np
@@ -52,15 +51,24 @@ def CorrelationForSamplesize(DataBase,Size,):
     Result.append(Error)
     return Result
 
-Data=np.load('placesFC7.npy')
+#this has 50 batches of 10 images
+Data=np.load('/home/ray/caffe/_temp/batches/batch39/places_200000_fc7.npy')
+
+#This will have 500 images
+Data2=[]
+for i in Data:
+    Data2.extend(i)
+
+
+
 Means =[]
 Errors=[]
 SampleSizes=[]
 
-for i in range(1,len(Data),1000):
+for i in range(1,len(Data2),10):
     x=[]
     SampleSizes.append(i)
-    x.extend(CorrelationForSamplesize(Data,i))
+    x.extend(CorrelationForSamplesize(Data2,i))
     Means.append(x[0])
     Errors.append(x[1])
 plt.errorbar(SampleSizes,Means,Errors,linestyle='None', marker='^')
