@@ -55,9 +55,7 @@ def CorrelationForSamplesize(DataBase,Size,):
 Data=np.load('/home/ray/caffe/_temp/batches/batch39/places_200000_fc7.npy')
 
 #This will have 500 images
-Data2=[]
-for i in Data:
-    Data2.extend(i)
+Data.flatten()
 
 
 
@@ -65,10 +63,10 @@ Means =[]
 Errors=[]
 SampleSizes=[]
 
-for i in range(1,len(Data2),10):
+for i in range(1,len(Data),10):
     x=[]
     SampleSizes.append(i)
-    x.extend(CorrelationForSamplesize(Data2,i))
+    x.extend(CorrelationForSamplesize(Data,i))
     Means.append(x[0])
     Errors.append(x[1])
 plt.errorbar(SampleSizes,Means,Errors,linestyle='None', marker='^')
