@@ -1,0 +1,16 @@
+import numpy as np
+
+from matplotlib.mlab import PCA
+data=np.load('/data/placesFeatures/placesFC7.npy')
+
+layer='FC7'
+
+results = PCA(data)
+coefficients = results.Wt
+PCs=results.Y
+Variances=results.fracs
+
+np.save('coefficients'+layer,coefficients)
+np.save('PrincipalComponents'+layer, PCs)
+np.save('Variances'+layer,Variances)
+ 
